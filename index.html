@@ -346,11 +346,6 @@
 <li><font color="blue">直接跳转拨号界面</font></li>
 <li><font color="blue">弹出拨号选择提示框(telprompt是私有方法上架可能会被禁止)</font></li>
 <li><font color="blue">创建一个UIWebView来加载URL，拨完后能自动跳回原来应用(这里的webView千万不要设置尺寸，不然会挡住其他页面)</font>
-
-</li>
-</ol>
-<figure class="highlight scheme"><table><tr><td class="code"><pre><span class="line">[[<span class="name">UIApplication</span> sharedApplication] openURL:[<span class="name">NSURL</span> URLWithString:@<span class="string">"tel://110"</span>] options:@&#123;&#125; completionHandler:nil]<span class="comment">;</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight scheme"><table><tr><td class="code"><pre><span class="line">[[<span class="name">UIApplication</span> sharedApplication] openURL:[<span class="name">NSURL</span> URLWithString:@<span class="string">"telprompt://110"</span>] options:@&#123;&#125; completionHandler:nil]<span class="comment">;</span></span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/02/05/iOS常用跳转/#more" rel="contents">
