@@ -342,10 +342,14 @@
 
       
         
-          <h5 id="打电话"><a href="#打电话" class="headerlink" title="打电话"></a>打电话</h5><ol>
-<li>直接跳转拨号界面<figure class="highlight plain"><figcaption><span>sharedApplication] openURL:[NSURL URLWithString:@"tel://110"] options:@&#123;&#125; completionHandler:nil];```</span></figcaption><table><tr><td class="code"><pre><span class="line">2. 弹出拨号选择提示框(telprompt是私有方法上架可能会被禁止)</span><br><span class="line">```[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@&quot;telprompt://110&quot;] options:@&#123;&#125; completionHandler:nil];</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
+          <h5 id="打电话"><a href="#打电话" class="headerlink" title="打电话"></a>打电话</h5><ul>
+<li>直接跳转拨号界面</li>
+</ul>
+<figure class="highlight scheme"><table><tr><td class="code"><pre><span class="line">[[<span class="name">UIApplication</span> sharedApplication] openURL:[<span class="name">NSURL</span> URLWithString:@<span class="string">"tel://110"</span>] options:@&#123;&#125; completionHandler:nil]<span class="comment">;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>弹出拨号选择提示框(telprompt是私有方法上架可能会被禁止)</li>
+</ul>
+<figure class="highlight scheme"><table><tr><td class="code"><pre><span class="line">[[<span class="name">UIApplication</span> sharedApplication] openURL:[<span class="name">NSURL</span> URLWithString:@<span class="string">"telprompt://110"</span>] options:@&#123;&#125; completionHandler:nil]<span class="comment">;</span></span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/02/05/iOS常用跳转/#more" rel="contents">
