@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Swift," />
 
 
 
@@ -79,17 +79,18 @@
 
 
 
-<meta name="description" content="我就看你皮">
-<meta property="og:type" content="website">
-<meta property="og:title" content="iOS常用跳转">
-<meta property="og:url" content="http://yoursite.com/iOS常用跳转/index.html">
+<meta name="description" content="1、字符串的基本使用OC与Swift字符串的区别  OC 中使用字符串类型是NSSting,Swift 中使用的字符串类型是StringOC中使用的是@“”，Swift用在“”使用String的原因String是一个结构体，性能更高（保存的是直接的值）NSString是OC的一个对象，性能略差String支持遍历   常见使用">
+<meta name="keywords" content="Swift">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Swift &lt;二&gt; 字符串">
+<meta property="og:url" content="http://yoursite.com/2018/04/26/Swift-二-字符串/index.html">
 <meta property="og:site_name" content="一个被怼的小开发">
-<meta property="og:description" content="我就看你皮">
+<meta property="og:description" content="1、字符串的基本使用OC与Swift字符串的区别  OC 中使用字符串类型是NSSting,Swift 中使用的字符串类型是StringOC中使用的是@“”，Swift用在“”使用String的原因String是一个结构体，性能更高（保存的是直接的值）NSString是OC的一个对象，性能略差String支持遍历   常见使用">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-05T08:49:16.000Z">
+<meta property="og:updated_time" content="2018-04-26T09:00:00.174Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="iOS常用跳转">
-<meta name="twitter:description" content="我就看你皮">
+<meta name="twitter:title" content="Swift &lt;二&gt; 字符串">
+<meta name="twitter:description" content="1、字符串的基本使用OC与Swift字符串的区别  OC 中使用字符串类型是NSSting,Swift 中使用的字符串类型是StringOC中使用的是@“”，Swift用在“”使用String的原因String是一个结构体，性能更高（保存的是直接的值）NSString是OC的一个对象，性能略差String支持遍历   常见使用">
 
 
 
@@ -119,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/iOS常用跳转/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/04/26/Swift-二-字符串/"/>
 
 
 
 
 
-  <title>iOS常用跳转 | 一个被怼的小开发</title>
+  <title>Swift <二> 字符串 | 一个被怼的小开发</title>
   
 
 
@@ -240,33 +241,209 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/26/Swift-二-字符串/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="一个被怼的小开发">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/img/PNG.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一个被怼的小开发">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">iOS常用跳转</h1>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
+          <h1 class="post-title" itemprop="name headline">Swift <二> 字符串</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-26T16:47:38+08:00">
+                2018-04-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
           
-        
-      </div>
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Swift/" itemprop="url" rel="index">
+                    <span itemprop="name">Swift</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  153
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <h3 id="1、字符串的基本使用"><a href="#1、字符串的基本使用" class="headerlink" title="1、字符串的基本使用"></a>1、字符串的基本使用</h3><p><strong>OC与Swift字符串的区别</strong></p>
+<blockquote>
+<p>OC 中使用字符串类型是NSSting,Swift 中使用的字符串类型是String<br>OC中使用的是@“”，Swift用在“”<br>使用String的原因<br>String是一个结构体，性能更高（保存的是直接的值）<br>NSString是OC的一个对象，性能略差<br>String支持遍历</p>
+</blockquote>
+<p><strong> 常见使用 </strong></p>
+<a id="more"></a>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">var</span> str = <span class="string">"傲慢与偏见"</span></span><br><span class="line"><span class="comment">//获取字符串的长度</span></span><br><span class="line"></span><br><span class="line">str.lengthOfBytes(using:String<span class="selector-class">.Encoding</span><span class="selector-class">.utf8</span>)<span class="comment">//获取字节长度</span></span><br><span class="line">str.count<span class="comment">//获取字符串长度</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//字符串遍历</span></span><br><span class="line"><span class="keyword">for</span> c <span class="keyword">in</span> str &#123;</span><br><span class="line"><span class="function"><span class="title">print</span><span class="params">(c)</span></span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//字符串拼接</span></span><br><span class="line">str + <span class="string">"愚蠢"</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<h5 id="未完待续"><a href="#未完待续" class="headerlink" title="未完待续"></a>未完待续</h5></blockquote>
+
       
     </div>
     
     
     
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Swift/" rel="tag"><i class="fa fa-tag"></i> Swift</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/26/Swift-一-逻辑分支和循环/" rel="next" title="Swift <一> 逻辑分支和循环">
+                <i class="fa fa-chevron-left"></i> Swift <一> 逻辑分支和循环
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/26/Swift-四-类型转换和空和运算符/" rel="prev" title="Swift <四> 类型转换和空和运算符">
+                Swift <四> 类型转换和空和运算符 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -304,8 +481,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -397,6 +583,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、字符串的基本使用"><span class="nav-number">1.</span> <span class="nav-text">1、字符串的基本使用</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#未完待续"><span class="nav-number">1.0.1.</span> <span class="nav-text">未完待续</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
