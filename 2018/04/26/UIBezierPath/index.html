@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="iOS," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="UIBezierPath 看了前面，大家是不是都想来看看UIBezierPath详解呢，然后开始展示真正的装逼技术撒，其实，看完你就会发现UIBezierPath也就那么回事（先泼一盆冷水）  创建UIBezierPath的类方法介绍 初始化  + (instancetype) bezierPath;  初始化矩形  /*** 该方法将会创建一个闭合路径, 起始点是 rect 参数的的 origi">
+<meta name="keywords" content="iOS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="UIBezierPath">
+<meta property="og:url" content="http://yoursite.com/2018/04/26/UIBezierPath/index.html">
+<meta property="og:site_name" content="一个被怼的小开发">
+<meta property="og:description" content="UIBezierPath 看了前面，大家是不是都想来看看UIBezierPath详解呢，然后开始展示真正的装逼技术撒，其实，看完你就会发现UIBezierPath也就那么回事（先泼一盆冷水）  创建UIBezierPath的类方法介绍 初始化  + (instancetype) bezierPath;  初始化矩形  /*** 该方法将会创建一个闭合路径, 起始点是 rect 参数的的 origi">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://yoursite.com/img/2452150-5bf0e532c2a0f6d9.jpg">
+<meta property="og:image" content="http://yoursite.com/img/2452150-fabfa795e061d718.jpg">
+<meta property="og:image" content="http://yoursite.com/img/2452150-3d4952efead3a84c.jpg">
+<meta property="og:image" content="http://yoursite.com/img/2452150-cd1b858ce7df9dd6.png.jpeg">
+<meta property="og:image" content="http://yoursite.com/img/2452150-71112236fff490b8.png.jpeg">
+<meta property="og:image" content="http://yoursite.com/img/2452150-d6647c67c61e87c6.png.jpeg">
+<meta property="og:image" content="http://yoursite.com/img/Snip20180426_20.png">
+<meta property="og:updated_time" content="2018-04-26T08:29:26.251Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="UIBezierPath">
+<meta name="twitter:description" content="UIBezierPath 看了前面，大家是不是都想来看看UIBezierPath详解呢，然后开始展示真正的装逼技术撒，其实，看完你就会发现UIBezierPath也就那么回事（先泼一盆冷水）  创建UIBezierPath的类方法介绍 初始化  + (instancetype) bezierPath;  初始化矩形  /*** 该方法将会创建一个闭合路径, 起始点是 rect 参数的的 origi">
+<meta name="twitter:image" content="http://yoursite.com/img/2452150-5bf0e532c2a0f6d9.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/04/26/UIBezierPath/"/>
+
+
+
+
+
+  <title>UIBezierPath | 一个被怼的小开发</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">一个被怼的小开发</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">我就看你皮</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/26/UIBezierPath/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="一个被怼的小开发">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/img/PNG.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一个被怼的小开发">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">UIBezierPath</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-26T16:22:35+08:00">
+                2018-04-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3,092
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  12
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="UIBezierPath"><a href="#UIBezierPath" class="headerlink" title="UIBezierPath"></a>UIBezierPath</h2><blockquote>
+<p>看了前面，大家是不是都想来看看UIBezierPath详解呢，然后开始展示真正的装逼技术撒，其实，看完你就会发现UIBezierPath也就那么回事（先泼一盆冷水）</p>
+</blockquote>
+<h4 id="创建UIBezierPath的类方法介绍"><a href="#创建UIBezierPath的类方法介绍" class="headerlink" title="创建UIBezierPath的类方法介绍"></a>创建UIBezierPath的类方法介绍</h4><ul>
+<li>初始化</li>
+</ul>
+<figure class="highlight elm"><table><tr><td class="code"><pre><span class="line">+ (instance<span class="keyword">type</span>) bezierPath;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>初始化矩形</li>
+</ul>
+<figure class="highlight elm"><table><tr><td class="code"><pre><span class="line">/**</span><br><span class="line">* 该方法将会创建一个闭合路径, 起始点是 rect 参数的的 origin, 并且按照顺时针方向添加直线, 最终形成矩形</span><br><span class="line">* @param rect: 矩形路径的 <span class="type">Frame</span></span><br><span class="line">*/</span><br><span class="line">+ (instance<span class="keyword">type</span>)bezierPathWithRect:(<span class="type">CGRect</span>)rect;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>椭圆形</li>
+</ul>
+<figure class="highlight elm"><table><tr><td class="code"><pre><span class="line">/**</span><br><span class="line">* 该方法将会创建一个闭合路径, 该方法会通过顺时针的绘制贝塞尔曲线, 绘制出一个近似椭圆的形状. 如果 rect 参数指定了一个矩形, 那么该 <span class="type">UIBezierPath</span> 对象将会描述一个圆形.</span><br><span class="line">* @param rect: 矩形路径的 <span class="type">Frame</span></span><br><span class="line">*/</span><br><span class="line">+ (instance<span class="keyword">type</span>)bezierPathWithOvalInRect:(<span class="type">CGRect</span>)rect;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>圆角矩形</p>
+<a id="more"></a>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">/**</span><br><span class="line"><span class="bullet">* </span>该方法将会创建一个闭合路径, 该方法会顺时针方向连续绘制直线和曲线. 当 rect 为正方形时且 cornerRadius 等于边长一半时, 则该方法会描述一个圆形路径.</span><br><span class="line"><span class="bullet">* </span>@param rect: 矩形路径的 Frame</span><br><span class="line"><span class="bullet">* </span>@param cornerRadius: 矩形的圆角半径</span><br><span class="line">*/</span><br><span class="line"><span class="bullet">+ </span>(instancetype) bezierPathWithRoundedRect:(CGRect)rect</span><br><span class="line">cornerRadius:(CGFloat)cornerRadius;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>特定的圆角矩形</p>
+</li>
+</ul>
+<figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 该方法将会创建一个闭合路径, 该方法会顺时针方向连续绘制直线和曲线.</span></span><br><span class="line"><span class="comment">* <span class="doctag">@param</span> rect: 矩形路径的 Frame</span></span><br><span class="line"><span class="comment">* <span class="doctag">@param</span> corners: UIRectCorner 枚举类型, 指定矩形的个角变为圆角</span></span><br><span class="line"><span class="comment">* <span class="doctag">@param</span> cornerRadii: 矩形的圆角半径</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">+ (instancetype) <span class="string">bezierPathWithRoundedRect:</span>(CGRect)rect</span><br><span class="line"><span class="string">byRoundingCorners:</span>(UIRectCorner)corners</span><br><span class="line"><span class="string">cornerRadii:</span>(CGSize)cornerRadii;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>弧度</li>
+</ul>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="string">/**</span></span><br><span class="line"><span class="string">*</span> <span class="string">该方法会创建出一个开放路径,</span> <span class="string">创建出来的圆弧是圆的一部分.</span> <span class="string">在默认的坐标系统中,</span> <span class="string">开始角度</span> <span class="string">和</span> <span class="string">结束角度</span> <span class="string">都是基于单位圆的(看下面这张图).</span> <span class="string">调用这个方法之后,</span> <span class="string">currentPoint</span> <span class="string">将会设置为圆弧的结束点.</span></span><br><span class="line"><span class="string">*</span> <span class="string">举例来说:</span> <span class="string">指定其实角度为0,</span> <span class="string">指定结束角度为π,</span> <span class="string">设置</span> <span class="string">clockwise</span> <span class="string">属性为</span> <span class="literal">YES</span><span class="string">,</span> <span class="string">将会绘制出圆的下半部分.</span></span><br><span class="line"><span class="string">*</span> <span class="string">然而当我们不修改起始角度</span> <span class="string">和</span> <span class="string">结束角度,</span> <span class="string">我们仅仅将</span> <span class="string">clockwise</span> <span class="string">角度设置为</span> <span class="literal">NO</span><span class="string">,</span> <span class="string">则会绘制出来一个圆的上半部分.</span></span><br><span class="line"><span class="string">*</span> <span class="string">@param</span> <span class="attr">center:</span> <span class="string">圆心</span></span><br><span class="line"><span class="string">*</span> <span class="string">@param</span> <span class="attr">radius:</span> <span class="string">半径</span></span><br><span class="line"><span class="string">*</span> <span class="string">@param</span> <span class="attr">startAngle:</span> <span class="string">起始角度</span></span><br><span class="line"><span class="string">*</span> <span class="string">@param</span> <span class="attr">endAngle:</span> <span class="string">结束角度</span></span><br><span class="line"><span class="string">*</span> <span class="string">@param</span> <span class="attr">clockwise:</span> <span class="string">是否顺时针绘制</span> <span class="literal">Yes</span><span class="string">顺，NO逆时针</span></span><br><span class="line"><span class="string">*/</span></span><br><span class="line"><span class="string">+</span> <span class="string">(instancetype)</span> <span class="attr">bezierPathWithArcCenter:(CGPoint)center</span></span><br><span class="line"><span class="attr">radius:</span><span class="string">(CGFloat)radius</span></span><br><span class="line"><span class="attr">startAngle:</span><span class="string">(CGFloat)startAngle</span></span><br><span class="line"><span class="attr">endAngle:</span><span class="string">(CGFloat)endAngle</span></span><br><span class="line"><span class="attr">clockwise:</span><span class="string">(BOOL)clockwise;</span></span><br></pre></td></tr></table></figure>
+<p><img src="/img/2452150-5bf0e532c2a0f6d9.jpg" alt=""></p>
+<h4 id="根据具体路径返回形状"><a href="#根据具体路径返回形状" class="headerlink" title="根据具体路径返回形状"></a>根据具体路径返回形状</h4><figure class="highlight elm"><table><tr><td class="code"><pre><span class="line">+ (instance<span class="keyword">type</span>) bezierPathWithCGPath:(<span class="type">CGPathRef</span>)<span class="type">CGPath</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>修改绘制方向</li>
+</ul>
+<figure class="highlight asciidoc"><table><tr><td class="code"><pre><span class="line">/*<span class="strong">*</span></span><br><span class="line"><span class="strong">*</span> 通过该方法反转一条路径, 并不会修改该路径的样子. 它仅仅是修改了绘制的方向</span><br><span class="line"><span class="bullet">* </span>@return: 返回一个新的 UIBezierPath 对象, 形状和原来路径的形状一样,</span><br><span class="line"><span class="bullet">* </span>但是绘制的方向相反.</span><br><span class="line"><span class="strong">*/</span></span><br><span class="line"><span class="strong">- (UIBezierPath *</span>) bezierPathByReversingPath;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>开始点（将currentPoint移动到指定的点）</li>
+</ul>
+<figure class="highlight arduino"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 将开始描绘的点移动到某一点</span></span><br><span class="line">- (<span class="keyword">void</span>)moveToPoint:(CGPoint)<span class="built_in">point</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>添加直线</li>
+</ul>
+<figure class="highlight dart"><table><tr><td class="code"><pre><span class="line"><span class="comment"><span class="markdown">/**</span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet">* </span>该方法将会从 currentPoint 到 指定点 链接一条直线.</span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet">* </span>Note: 在追加完这条直线后, 该方法将会更新 currentPoint 为 指定点</span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet">* </span>调用该方法之前, 你必须先设置 currentPoint. 如果当前绘制路径</span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet">* </span>为空, 并且未设置 currentPoint, 那么调用该方法将不会产生任何</span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet">* </span>效果.</span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet">* </span>@param point: 绘制直线的终点坐标, 当前坐标系统中的某一点</span></span></span><br><span class="line"><span class="comment"><span class="markdown">*/</span></span></span><br><span class="line">- (<span class="keyword">void</span>)addLineToPoint:(CGPoint)point;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>添加弧线</li>
+</ul>
+<p>/**</p>
+<p>* 该方法将会从 currentPoint 添加一条指定的圆弧.</p>
+<p>* 该方法的介绍和构造方法中的一样. 请前往上文查看</p>
+<p>* @param center: 圆心</p>
+<p>* @param radius: 半径</p>
+<p>* @param startAngle: 起始角度</p>
+<p>* @param endAngle: 结束角度</p>
+<p>* @param clockwise: 是否顺时针绘制</p>
+<p>*/</p>
+<ul>
+<li>(void)addArcWithCenter:(CGPoint)center</li>
+</ul>
+<figure class="highlight taggerscript"><table><tr><td class="code"><pre><span class="line">radius:<span class="symbol">\(</span>CGFloat<span class="symbol">\)</span>radius</span><br><span class="line"></span><br><span class="line">startAngle:<span class="symbol">\(</span>CGFloat<span class="symbol">\)</span>startAngle</span><br><span class="line"></span><br><span class="line">endAngle:<span class="symbol">\(</span>CGFloat<span class="symbol">\)</span>endAngle</span><br><span class="line"></span><br><span class="line">clockwise:<span class="symbol">\(</span>BOOL<span class="symbol">\)</span>clockwise NS<span class="symbol">\_</span>AVAILABLE<span class="symbol">\_</span>IOS<span class="symbol">\(</span>4<span class="symbol">\_</span>0<span class="symbol">\)</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>添加一条三次贝塞尔曲线</li>
+</ul>
+<figure class="highlight dart"><table><tr><td class="code"><pre><span class="line"><span class="comment"><span class="markdown">/**</span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet">* </span>该方法将会从 currentPoint 到 指定的 endPoint 追加一条三次贝塞尔曲线.</span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet">* </span>三次贝塞尔曲线的弯曲由两个控制点来控制. 如下图所示</span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet">* </span>Note: 调用该方法前, 你必须先设置 currentPoint, 如果路径为空,</span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet">* </span>并且尚未设置 currentPoint, 调用该方法则不会产生任何效果.</span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet">* </span>当添加完贝塞尔曲线后, 该方法将会自动更新 currentPoint 为</span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet">* </span>指定的结束点</span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet">* </span>@param endPoint: 终点</span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet">* </span>@param controlPoint1: 控制点1</span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet">* </span>@param controlPoint2: 控制点2</span></span></span><br><span class="line"><span class="comment"><span class="markdown">*/</span></span></span><br><span class="line">- (<span class="keyword">void</span>)addCurveToPoint:(CGPoint)endPoint</span><br><span class="line">controlPoint1:(CGPoint)controlPoint1</span><br><span class="line">controlPoint2:(CGPoint)controlPoint2;</span><br></pre></td></tr></table></figure>
+<p><img src="/img/2452150-fabfa795e061d718.jpg" alt=""></p>
+<ul>
+<li>添加一条二次贝塞尔曲线</li>
+</ul>
+<figure class="highlight dart"><table><tr><td class="code"><pre><span class="line"><span class="comment"><span class="markdown">/**</span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet">* </span>该方法将会从 currentPoint 到 指定的 endPoint 追加一条二次贝塞尔曲线.</span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet">* </span>currentPoint、endPoint、controlPoint 三者的关系最终定义了二次贝塞尔曲线的形状.</span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet">* </span>二次贝塞尔曲线的弯曲由一个控制点来控制. 如下图所示</span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet">* </span>Note: 调用该方法前, 你必须先设置 currentPoint, 如果路径为空,</span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet">* </span>并且尚未设置 currentPoint, 调用该方法则不会产生任何效果.</span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet">* </span>当添加完贝塞尔曲线后, 该方法将会自动更新 currentPoint 为</span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet">* </span>指定的结束点</span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet">* </span>@param endPoint: 终点</span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet">* </span>@param controlPoint: 控制点</span></span></span><br><span class="line"><span class="comment"><span class="markdown">*/</span></span></span><br><span class="line">- (<span class="keyword">void</span>)addQuadCurveToPoint:(CGPoint)endPoint</span><br><span class="line">controlPoint:(CGPoint)controlPoint;</span><br></pre></td></tr></table></figure>
+<p><img src="/img/2452150-3d4952efead3a84c.jpg" alt=""></p>
+<ul>
+<li>关闭子路径（连接一条线到起点）</li>
+</ul>
+<figure class="highlight dart"><table><tr><td class="code"><pre><span class="line"><span class="comment"><span class="markdown">/**</span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet">* </span>该方法将会从 currentPoint 到子路经的起点 绘制一条直线,</span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet">* </span>以此来关闭当前的自路径. 紧接着该方法将会更新 currentPoint</span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet">* </span>为 刚添加的这条直线的终点, 也就是当前子路经的起点.</span></span></span><br><span class="line"><span class="comment"><span class="markdown">*/</span></span></span><br><span class="line">- (<span class="keyword">void</span>)closePath;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>删除所有路径（点）</li>
+</ul>
+<figure class="highlight lisp"><table><tr><td class="code"><pre><span class="line">- (<span class="name">void</span>)removeAllPoints<span class="comment">;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>将指定的UIBezierPath中的内容添加到当前UIBezierPath中</li>
+</ul>
+<figure class="highlight dart"><table><tr><td class="code"><pre><span class="line"><span class="comment"><span class="markdown">/**</span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet">* </span>该方法将会在当前 UIBezierPath 对象的路径中追加</span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet">* </span>指定的 UIBezierPath 对象中的内容.</span></span></span><br><span class="line"><span class="comment"><span class="markdown">*/</span></span></span><br><span class="line">- (<span class="keyword">void</span>)appendPath:(UIBezierPath *)bezierPath;</span><br></pre></td></tr></table></figure>
+<h4 id="绘图属性"><a href="#绘图属性" class="headerlink" title="绘图属性"></a>绘图属性</h4><ul>
+<li>线宽</li>
+</ul>
+<p>/**</p>
+<ul>
+<li><p>线宽属性定义了 <code>UIBezierPath</code> 对象中绘制的曲线规格. 默认为: 1.0<br>*/<br>@property(nonatomic) CGFloat lineWidth;</p>
+</li>
+<li><p>曲线终点样式</p>
+</li>
+</ul>
+<figure class="highlight objectivec"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 该属性应用于曲线的终点和起点. 该属性在一个闭合子路经中是无效果的. 默认为: kCGLineCapButt</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">@property</span>(<span class="keyword">nonatomic</span>) <span class="built_in">CGLineCap</span> lineCapStyle;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// CGPath.h</span></span><br><span class="line"><span class="comment">/* Line cap styles. */</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="built_in">CF_ENUM</span>(int32_t, <span class="built_in">CGLineCap</span>) &#123;</span><br><span class="line">kCGLineCapButt,</span><br><span class="line">kCGLineCapRound,</span><br><span class="line">kCGLineCapSquare</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><img src="/img/2452150-cd1b858ce7df9dd6.png.jpeg" alt=""></p>
+<ul>
+<li>曲线连接样式</li>
+</ul>
+<figure class="highlight objectivec"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 默认为: kCGLineJoinMiter.</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">@property</span>(<span class="keyword">nonatomic</span>) <span class="built_in">CGLineJoin</span> lineJoinStyle;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// CGPath.h</span></span><br><span class="line"><span class="comment">/* Line join styles. */</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="built_in">CF_ENUM</span>(int32_t, <span class="built_in">CGLineJoin</span>) &#123;</span><br><span class="line">kCGLineJoinMiter,</span><br><span class="line">kCGLineJoinRound,</span><br><span class="line">kCGLineJoinBevel</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><img src="/img/2452150-71112236fff490b8.png.jpeg" alt=""></p>
+<ul>
+<li>内角和外角的距离</li>
+</ul>
+<figure class="highlight dart"><table><tr><td class="code"><pre><span class="line"><span class="comment"><span class="markdown">/**</span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet">* </span>两条线交汇处内角和外角之间的最大距离, 只有当连接点样式为 kCGLineJoinMiter</span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet">* </span>时才会生效，最大限制为10</span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet">* </span>我们都知道, 两条直线相交时, 夹角越小, 斜接长度就越大.</span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet">* </span>该属性就是用来控制最大斜接长度的.</span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet">* </span>当我们设置了该属性, 如果斜接长度超过我们设置的范围,</span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet">* </span>则连接处将会以 kCGLineJoinBevel 连接类型进行显示.</span></span></span><br><span class="line"><span class="comment"><span class="markdown">*/</span></span></span><br><span class="line"><span class="meta">@property</span>(nonatomic) CGFloat miterLimit;</span><br></pre></td></tr></table></figure>
+<p><img src="/img/2452150-d6647c67c61e87c6.png.jpeg" alt=""></p>
+<ul>
+<li>渲染精度</li>
+</ul>
+<figure class="highlight dart"><table><tr><td class="code"><pre><span class="line"><span class="comment"><span class="markdown">/**</span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet">* </span>该属性用来确定渲染曲线路径的精确度.</span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet">* </span>该属性的值用来测量真实曲线的点和渲染曲线的点的最大允许距离.</span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet">* </span>值越小, 渲染精度越高, 会产生相对更平滑的曲线, 但是需要花费更</span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet">* </span>多的计算时间. 值越大导致则会降低渲染精度, 这会使得渲染的更迅</span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet">* </span>速. flatness 的默认值为 0.6.</span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet">* </span>Note: 大多数情况下, 我们都不需要修改这个属性的值. 然而当我们</span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet">* </span>希望以最小的消耗去绘制一个临时的曲线时, 我们也许会临时增</span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet">* </span>大这个值, 来获得更快的渲染速度.</span></span></span><br><span class="line"><span class="comment"><span class="markdown">*/</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">@property</span>(nonatomic) CGFloat flatness;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>虚线</li>
+</ul>
+<figure class="highlight dart"><table><tr><td class="code"><pre><span class="line"><span class="comment"><span class="markdown">/**</span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet">* </span>@param pattern: 该属性是一个 C 语言的数组, 其中每一个元素都是 CGFloat</span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet">* </span>数组中的元素代表着线段每一部分的长度, 第一个元素代表线段的第一条线,</span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet">* </span>第二个元素代表线段中的第一个间隙. 这个数组中的值是轮流的. 来解释一下</span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet">* </span>什么叫轮流的.</span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet">* </span>举个例子: 声明一个数组 CGFloat dash[] = @&#123;3.0, 1.0&#125;;</span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet">* </span>这意味着绘制的虚线的第一部分长度为3.0, 第一个间隙长度为1.0, 虚线的</span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet">* </span>第二部分长度为3.0, 第二个间隙长度为1.0. 以此类推.</span></span></span><br><span class="line"><span class="comment"><span class="markdown"></span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet">* </span>@param count: 这个参数是 pattern 数组的个数</span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet">* </span>@param phase: 这个参数代表着, 虚线从哪里开始绘制.</span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet">* </span>举个例子: 这是 phase 为 6. pattern[] = @&#123;5, 2, 3, 2&#125;; 那么虚线将会</span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet">* </span>第一个间隙的中间部分开始绘制, 如果不是很明白就请继续往下看,</span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet">* </span>下文实战部分会对虚线进行讲解.</span></span></span><br><span class="line"><span class="comment"><span class="markdown">*/</span></span></span><br><span class="line">- (<span class="keyword">void</span>)setLineDash:(<span class="keyword">const</span> CGFloat *)pattern</span><br><span class="line">count:(NSInteger)count</span><br><span class="line">phase:(CGFloat)phase;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>重新获取虚线样式</li>
+</ul>
+<figure class="highlight asciidoc"><table><tr><td class="code"><pre><span class="line">/*<span class="strong">*</span></span><br><span class="line"><span class="strong">*</span> 该方法可以重新获取之前设置过的虚线样式.</span><br><span class="line"><span class="bullet">* </span>Note: pattern 这个参数的容量必须大于该方法返回数组的容量.</span><br><span class="line"><span class="bullet">* </span>如果无法确定数组的容量, 那么可以调用两次该方法, 第一次</span><br><span class="line"><span class="bullet">* </span>调用该方法的时候, 传入 count 参数, 然后在用 count 参数</span><br><span class="line"><span class="bullet">* </span>来申请 pattern 数组的内存空间. 然后再第二次正常的调用该方法</span><br><span class="line"><span class="strong">*/</span></span><br><span class="line"><span class="strong">- (void)getLineDash:(CGFloat *</span>)pattern</span><br><span class="line">count:(NSInteger <span class="strong">*)count</span></span><br><span class="line"><span class="strong">phase:(CGFloat *</span>)phase;</span><br></pre></td></tr></table></figure>
+<h4 id="绘制路径"><a href="#绘制路径" class="headerlink" title="绘制路径"></a>绘制路径</h4><ul>
+<li>填充</li>
+</ul>
+<figure class="highlight dart"><table><tr><td class="code"><pre><span class="line"><span class="comment"><span class="markdown">/**</span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet">* </span>该方法当前的填充颜色 和 绘图属性对路径的封闭区域进行填充.</span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet">* </span>如果当前路径是一条开放路径, 该方法将会隐式的将路径进行关闭后进行填充</span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet">* </span>该方法在进行填充操作之前, 会自动保存当前绘图的状态, 所以我们不需要</span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet">* </span>自己手动的去保存绘图状态了.</span></span></span><br><span class="line"><span class="comment"><span class="markdown">*/</span></span></span><br><span class="line">- (<span class="keyword">void</span>)fill;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>描边</li>
+</ul>
+<figure class="highlight arduino"><table><tr><td class="code"><pre><span class="line">- (<span class="keyword">void</span>)<span class="built_in">stroke</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>混合</li>
+</ul>
+<figure class="highlight dart"><table><tr><td class="code"><pre><span class="line"><span class="comment"><span class="markdown">/**</span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet">* </span>该方法当前的填充颜色 和 绘图属性 (外加指定的混合模式 和 透明度)</span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet">* </span>对路径的封闭区域进行填充. 如果当前路径是一条开放路径, 该方法将</span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet">* </span>会隐式的将路径进行关闭后进行填充</span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet">* </span>该方法在进行填充操作之前, 会自动保存当前绘图的状态, 所以我们不需要</span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet">* </span>自己手动的去保存绘图状态了.</span></span></span><br><span class="line"><span class="comment"><span class="markdown">*</span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet">* </span>@param blendMode: 混合模式决定了如何和已经存在的被渲染过的内容进行合成</span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet">* </span>@param alpha: 填充路径时的透明度</span></span></span><br><span class="line"><span class="comment"><span class="markdown">*/</span></span></span><br><span class="line">- (<span class="keyword">void</span>)fillWithBlendMode:(CGBlendMode)blendMode</span><br><span class="line">alpha:(CGFloat)alpha;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)strokeWithBlendMode:(CGBlendMode)blendMode</span><br><span class="line">alpha:(CGFloat)alpha;</span><br></pre></td></tr></table></figure>
+<h4 id="路径剪切"><a href="#路径剪切" class="headerlink" title="路径剪切"></a>路径剪切</h4><figure class="highlight dart"><table><tr><td class="code"><pre><span class="line"><span class="comment"><span class="markdown">/**</span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet">* </span>该方法将会修改当前绘图上下文的可视区域.</span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet">* </span>当调用这个方法之后, 会导致接下来所有的渲染</span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet">* </span>操作, 只会在剪切下来的区域内进行, 区域外的</span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet">* </span>内容将不会被渲染.</span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet">* </span>如果你希望执行接下来的绘图时, 删除剪切区域,</span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet">* </span>那么你必须在调用该方法前, 先使用 CGContextSaveGState 方法</span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet">* </span>保存当前的绘图状态, 当你不再需要这个剪切区域</span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet">* </span>的时候, 你只需要使用 CGContextRestoreGState 方法</span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet">* </span>来恢复之前保存的绘图状态就可以了.</span></span></span><br><span class="line"><span class="comment"><span class="markdown">*/</span></span></span><br><span class="line">- (<span class="keyword">void</span>)addClip;</span><br></pre></td></tr></table></figure>
+<h4 id="一些判断"><a href="#一些判断" class="headerlink" title="一些判断"></a>一些判断</h4><ul>
+<li>是否包含某个点</li>
+</ul>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">/**</span><br><span class="line"><span class="bullet">* </span>该方法返回一个布尔值, 当曲线的覆盖区域包含</span><br><span class="line"><span class="bullet">* </span>指定的点(内部点)， 则返回 YES, 否则返回 NO.</span><br><span class="line"><span class="bullet">* </span>Note: 如果当前的路径是一个开放的路径, 那么</span><br><span class="line"><span class="bullet">* </span>就算指定点在路径覆盖范围内, 该方法仍然会</span><br><span class="line"><span class="bullet">* </span>返回 NO, 所以如果你想判断一个点是否在一个</span><br><span class="line"><span class="bullet">* </span>开放路径的范围内时, 你需要先Copy一份路径,</span><br><span class="line"><span class="bullet">* </span>并调用 -(void)closePath; 将路径封闭, 然后</span><br><span class="line"><span class="bullet">* </span>再调用此方法来判断指定点是否是内部点.</span><br><span class="line"><span class="bullet">* </span>@param point: 指定点.</span><br><span class="line">*/</span><br><span class="line"><span class="bullet">- </span>(BOOL) containsPoint:(CGPoint)point;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>路径是否为空</li>
+</ul>
+<figure class="highlight dart"><table><tr><td class="code"><pre><span class="line"><span class="comment"><span class="markdown">/**</span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet">* </span>检测当前路径是否绘制过直线或曲线.</span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet">* </span>Note: 记住, 就算你仅仅调用了 moveToPoint 方法</span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet">* </span>那么当前路径也被看做不为空.</span></span></span><br><span class="line"><span class="comment"><span class="markdown">*/</span></span></span><br><span class="line"><span class="meta">@property</span> (readonly, getter=isEmpty) BOOL empty;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>路径覆盖的矩形区域</li>
+</ul>
+<figure class="highlight dart"><table><tr><td class="code"><pre><span class="line"><span class="comment"><span class="markdown">/**</span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet">* </span>该属性描述的是一个能够完全包含路径中所有点</span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet">* </span>的一个最小的矩形区域. 该区域包含二次贝塞尔</span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet">* </span>曲线和三次贝塞尔曲线的控制点.</span></span></span><br><span class="line"><span class="comment"><span class="markdown">*/</span></span></span><br></pre></td></tr></table></figure>
+<h4 id="放射变换"><a href="#放射变换" class="headerlink" title="放射变换"></a>放射变换</h4><figure class="highlight dart"><table><tr><td class="code"><pre><span class="line"><span class="comment"><span class="markdown">/**</span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet">* </span>该方法将会直接对路径中的所有点进行指定的放射</span></span></span><br><span class="line"><span class="comment"><span class="markdown"><span class="bullet">* </span>变换操作.</span></span></span><br><span class="line"><span class="comment"><span class="markdown">*/</span></span></span><br><span class="line">- (<span class="keyword">void</span>)applyTransform:(CGAffineTransform)transform;</span><br></pre></td></tr></table></figure>
+<h4 id="画个虚线"><a href="#画个虚线" class="headerlink" title="画个虚线"></a>画个虚线</h4><figure class="highlight inform7"><table><tr><td class="code"><pre><span class="line">UIBezierPath *path =<span class="comment">[UIBezierPath bezierPath]</span>;</span><br><span class="line"><span class="comment">[path moveToPoint:CGPointMake(10, 50)]</span>;</span><br><span class="line"><span class="comment">[path addLineToPoint:CGPointMake(300, 50)]</span>;</span><br><span class="line">path.lineWidth = 2;</span><br><span class="line"><span class="comment">[<span class="comment">[UIColor redColor]</span> set]</span>;</span><br><span class="line">UIBezierPath *path1 =<span class="comment">[UIBezierPath bezierPath]</span>;</span><br><span class="line"><span class="comment">[path1 moveToPoint:CGPointMake(10, 100)]</span>;</span><br><span class="line"><span class="comment">[path1 addLineToPoint:CGPointMake(300, 100)]</span>;</span><br><span class="line">path1.lineWidth = 2;</span><br><span class="line">UIBezierPath *path2 =<span class="comment">[UIBezierPath bezierPath]</span>;</span><br><span class="line"><span class="comment">[path2 moveToPoint:CGPointMake(10, 150)]</span>;</span><br><span class="line"><span class="comment">[path2 addLineToPoint:CGPointMake(300, 150)]</span>;</span><br><span class="line">path2.lineWidth = 2;</span><br><span class="line">CGFloat dash<span class="comment">[]</span> = &#123;20.0,10.0&#125;;</span><br><span class="line">CGFloat dash1<span class="comment">[]</span> = &#123;20.0,10.0,40.0,20.0&#125;;</span><br><span class="line">CGFloat dash2<span class="comment">[]</span> = &#123;30.0,10.0&#125;;</span><br><span class="line"><span class="comment">[path setLineDash:dash count:2 phase:0]</span>;</span><br><span class="line">// 注意这里如果是三那个只会用到20，10，40，后面的20用不到</span><br><span class="line"><span class="comment">[path1 setLineDash:dash1 count:3 phase:0]</span>;</span><br><span class="line"><span class="comment">[path2 setLineDash:dash2 count:2 phase:2]</span>;</span><br><span class="line"><span class="comment">[path stroke]</span>;</span><br><span class="line"><span class="comment">[path1 stroke]</span>;</span><br><span class="line"><span class="comment">[path2 stroke]</span>;</span><br></pre></td></tr></table></figure>
+<p><img src="/img/Snip20180426_20.png" alt=""></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/iOS/" rel="tag"><i class="fa fa-tag"></i> iOS</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/26/画图基本操作/" rel="next" title="画图基本操作">
+                <i class="fa fa-chevron-left"></i> 画图基本操作
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/26/Swift-一-逻辑分支和循环/" rel="prev" title="Swift <一> 逻辑分支和循环">
+                Swift <一> 逻辑分支和循环 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="SOHUCS"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/img/PNG.png"
+                alt="一个被怼的小开发" />
+            
+              <p class="site-author-name" itemprop="name">一个被怼的小开发</p>
+              <p class="site-description motion-element" itemprop="description">我就看你皮</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Smalldevelopment" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:guyuyuji1994@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://plus.google.com/yourname1" target="_blank" title="Google">
+                      
+                        <i class="fa fa-fw fa-google"></i>Google</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://twitter.com/yourname1" target="_blank" title="Twitter">
+                      
+                        <i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情推荐
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://kevin_chaos.coding.me" title="Chaos" target="_blank">Chaos</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#UIBezierPath"><span class="nav-number">1.</span> <span class="nav-text">UIBezierPath</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建UIBezierPath的类方法介绍"><span class="nav-number">1.0.1.</span> <span class="nav-text">创建UIBezierPath的类方法介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#根据具体路径返回形状"><span class="nav-number">1.0.2.</span> <span class="nav-text">根据具体路径返回形状</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#绘图属性"><span class="nav-number">1.0.3.</span> <span class="nav-text">绘图属性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#绘制路径"><span class="nav-number">1.0.4.</span> <span class="nav-text">绘制路径</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#路径剪切"><span class="nav-number">1.0.5.</span> <span class="nav-text">路径剪切</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#一些判断"><span class="nav-number">1.0.6.</span> <span class="nav-text">一些判断</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#放射变换"><span class="nav-number">1.0.7.</span> <span class="nav-text">放射变换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#画个虚线"><span class="nav-number">1.0.8.</span> <span class="nav-text">画个虚线</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">一个被怼的小开发</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共9.8k字</span>
+</div>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
