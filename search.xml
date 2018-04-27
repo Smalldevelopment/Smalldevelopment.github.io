@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Swift 数组与字典]]></title>
+    <url>%2F2018%2F04%2F27%2FSwift-%E4%B8%89-%E6%95%B0%E7%BB%84%E4%B8%8E%E5%AD%97%E5%85%B8%2F</url>
+    <content type="text"><![CDATA[数组 可变数组 let arr: [Any] = [1,2,3] 不可变数组 let arr: [Any] = [1,2,3]var array: [Any] = [1,2,3]array.append(4)array.insert("你好", at: 2)array + [7,8]array.remove(at: 1)array.removeFirst(2)//删除前面两个array.removeLast(2)//删除后面两个array += [1,2,3]array.removeSubrange(1...2)//删除某个区间array[0] = 2 //改array.removeAll()array += [1,2,3]array.count //个数array.capacity //容量 数组遍历 for j in 0..&lt;array.count &#123;print(array[j])&#125;for value in array &#123;print(value)&#125;//遍历某个区间for value in array[0...3]&#123;value&#125;//遍历同时取下标for (index,value) in array.enumerated() &#123;print(index,value)&#125; 字典let dic : [String : Any] = ["a":1, "b":"2"] //不可变var dic : [String : Any] = ["a":1, "b":"2"] //可变 增 dic["c"] = 2//或则dic.updateValue(2,forKey:"c")//以上两种如原字典中已存此key,则修改value ,否则新增该键值对 删 dic.removeValue(forKey:"a")//通过索引删除let index = dic.index(forKey:"a")dic.remove(at:index) 查 for (key,value) in dic&#123;print (key, ":", value)&#125;]]></content>
+      <categories>
+        <category>Swift</category>
+      </categories>
+      <tags>
+        <tag>Swift</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Swift 类的基本使用]]></title>
     <url>%2F2018%2F04%2F26%2FSwift-%E5%85%AD-%E7%B1%BB%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8%2F</url>
     <content type="text"><![CDATA[类的介绍 注意：当一个实例对象被创建好之后,必须保证里面所有的非可选属性都有值 // swift 中,类是可以不继承父类的,那它本身就是rootClassclass Person&#123;//方案一:var name : Stringinit()&#123;self.name = ""&#125;init(name:String)&#123;self.name = name&#125;//方案二:var name : String?//方案三:var name : String = ""//可以写属性和方法//属性:实例属性,类型属性//方法:实例方法,类型方法&#125;//类,默认情况下,不会生成逐一构造函数(目的:保证所有非可选属性有值)//默认情况下,不能保证,所有的非可选属性有值//当一个实例对象被创建好之后,必须保证里面所有的非可选属性都有值//方案一:在构造函数中下手//方案二:把非可选改成可选//方案三:把非可选赋默认值let p = Person()class Person1:NSObject&#123;var name: String//若继承NSObject则必须重写构造方法override init()&#123;self.name = ""&#125;&#125; class Stu &#123;//属性 实例属性 类型属性//类型属性static var personCount :Int = 0//实例属性(存储属性,计算属性)//存储属性:可以直接用来存储数值的属性var name :String = ""var age :Int = 0var scoral :Double = 0var scoral2 :Double = 0//计算属性:并不是直接用来存储数值的,他是通过某写计算得来的数值var avgScoral :Double = &#123;get&#123;return (scoral+scoral2)/2&#125;&#125;init()&#123;Stu.personCount+=1&#125;deinit &#123;Stu.personCount-=1&#125;//实例方法func text() &#123;print("当前有\(Stu.personCount)人")&#125;//类方法//static修饰不能被重写static func PrintCount&#123;print("当前有\(Stu.personCount)人")&#125;&#125;var p :Stu? = Stu()var p1 :Stu? = Stu()var p2 :Stu? = Stu()Stu.personCountp = nilp1 = nilp2 = nilStu.personCount 析构函数class Stu: NSObject&#123;var name:String = ""var age:Int = 0// 析构函数 == OC 中的deallocdeinit &#123;print("对像被释放了")&#125;&#125;var s:Stu? = Stu()s = nil]]></content>
