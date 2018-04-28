@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="数组 可变数组  let arr: [Any] = [1,2,3]  不可变数组 let arr: [Any] = [1,2,3]var array: [Any] = [1,2,3]array.append(4)array.insert(&quot;你好&quot;, at: 2)array + [7,8]array.remove(at: 1)array.removeFirst(2)//删除前面两个array.rem">
+<meta name="description" content="图片圆角具体方法和画图操作基本差不过，主要分为以下几个步骤 开启图片下上文  UIGraphicsBeginImageContextWithOptions(img.size, false, 0.0)  描述路径  let path: UIBezierPath = UIBezierPath.init(ovalIn: CGRect(x: 0,y: 0,width: img.size.width,hei">
 <meta name="keywords" content="Swift">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Swift &lt;三&gt;数组与字典">
-<meta property="og:url" content="http://yoursite.com/2018/04/26/Swift-三-数组与字典/index.html">
+<meta property="og:title" content="截屏、圆角、保存相册">
+<meta property="og:url" content="http://yoursite.com/2018/04/26/截屏、圆角、保存相册/index.html">
 <meta property="og:site_name" content="一个被怼的小开发">
-<meta property="og:description" content="数组 可变数组  let arr: [Any] = [1,2,3]  不可变数组 let arr: [Any] = [1,2,3]var array: [Any] = [1,2,3]array.append(4)array.insert(&quot;你好&quot;, at: 2)array + [7,8]array.remove(at: 1)array.removeFirst(2)//删除前面两个array.rem">
+<meta property="og:description" content="图片圆角具体方法和画图操作基本差不过，主要分为以下几个步骤 开启图片下上文  UIGraphicsBeginImageContextWithOptions(img.size, false, 0.0)  描述路径  let path: UIBezierPath = UIBezierPath.init(ovalIn: CGRect(x: 0,y: 0,width: img.size.width,hei">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-27T02:44:22.584Z">
+<meta property="og:updated_time" content="2018-04-28T03:39:58.597Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Swift &lt;三&gt;数组与字典">
-<meta name="twitter:description" content="数组 可变数组  let arr: [Any] = [1,2,3]  不可变数组 let arr: [Any] = [1,2,3]var array: [Any] = [1,2,3]array.append(4)array.insert(&quot;你好&quot;, at: 2)array + [7,8]array.remove(at: 1)array.removeFirst(2)//删除前面两个array.rem">
+<meta name="twitter:title" content="截屏、圆角、保存相册">
+<meta name="twitter:description" content="图片圆角具体方法和画图操作基本差不过，主要分为以下几个步骤 开启图片下上文  UIGraphicsBeginImageContextWithOptions(img.size, false, 0.0)  描述路径  let path: UIBezierPath = UIBezierPath.init(ovalIn: CGRect(x: 0,y: 0,width: img.size.width,hei">
 
 
 
@@ -120,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/04/26/Swift-三-数组与字典/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/04/26/截屏、圆角、保存相册/"/>
 
 
 
 
 
-  <title>Swift <三>数组与字典 | 一个被怼的小开发</title>
+  <title>截屏、圆角、保存相册 | 一个被怼的小开发</title>
   
 
 
@@ -287,7 +287,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/26/Swift-三-数组与字典/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/26/截屏、圆角、保存相册/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="一个被怼的小开发">
@@ -304,7 +304,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Swift <三>数组与字典</h1>
+          <h1 class="post-title" itemprop="name headline">截屏、圆角、保存相册</h1>
         
 
         <div class="post-meta">
@@ -316,7 +316,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-26T16:51:59+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-26T16:33:50+08:00">
                 2018-04-26
               </time>
             
@@ -370,7 +370,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  232
+                  482
                 </span>
               
 
@@ -386,7 +386,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  2
                 </span>
               
             </div>
@@ -407,20 +407,39 @@
       
 
       
-        <h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h3><p><strong> 可变数组 </strong></p>
-<figure class="highlight accesslog"><table><tr><td class="code"><pre><span class="line">let arr: <span class="string">[Any]</span> = <span class="string">[1,2,3]</span></span><br></pre></td></tr></table></figure>
-<p><strong> 不可变数组</strong></p>
-<figure class="highlight smali"><table><tr><td class="code"><pre><span class="line">let arr: [Any] = [1,2,3]</span><br><span class="line"></span><br><span class="line">var array: [Any] = [1,2,3]</span><br><span class="line"></span><br><span class="line">array.append(4)</span><br><span class="line">array.insert(<span class="string">"你好"</span>, at: 2)</span><br><span class="line">array + [7,8]</span><br><span class="line">array.remove(at: 1)</span><br><span class="line">array.removeFirst(2)//删除前面两个</span><br><span class="line">array.removeLast(2)//删除后面两个</span><br><span class="line">array += [1,2,3]</span><br><span class="line">array.removeSubrange(1...2)//删除某个区间</span><br><span class="line">array[0] = 2 //改</span><br><span class="line">array.removeAll()</span><br><span class="line"></span><br><span class="line">array += [1,2,3]</span><br><span class="line">array.count //个数</span><br><span class="line">array.capacity //容量</span><br></pre></td></tr></table></figure>
+        <h3 id="图片圆角"><a href="#图片圆角" class="headerlink" title="图片圆角"></a>图片圆角</h3><h5 id="具体方法和画图操作基本差不过，主要分为以下几个步骤"><a href="#具体方法和画图操作基本差不过，主要分为以下几个步骤" class="headerlink" title="具体方法和画图操作基本差不过，主要分为以下几个步骤"></a>具体方法和画图操作基本差不过，主要分为以下几个步骤</h5><ol>
+<li><strong>开启图片下上文</strong></li>
+</ol>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="title">UIGraphicsBeginImageContextWithOptions</span><span class="params">(img.size, false, <span class="number">0.0</span>)</span></span></span><br></pre></td></tr></table></figure>
+<ol>
+<li><strong>描述路径</strong></li>
+</ol>
+<figure class="highlight arduino"><table><tr><td class="code"><pre><span class="line">let path: UIBezierPath = UIBezierPath.init(ovalIn: CGRect(x: <span class="number">0</span>,y: <span class="number">0</span>,<span class="built_in">width</span>: img.<span class="built_in">size</span>.<span class="built_in">width</span>,<span class="built_in">height</span>: img.<span class="built_in">size</span>.<span class="built_in">height</span>))</span><br></pre></td></tr></table></figure>
+<ol>
+<li><strong>开始剪切</strong></li>
+</ol>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">path</span><span class="selector-class">.addClip</span>()</span><br></pre></td></tr></table></figure>
+<ol>
+<li><strong>开始绘制</strong></li>
+</ol>
+<figure class="highlight less"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">img</span><span class="selector-class">.draw</span>(<span class="attribute">at</span>: CGPoint(<span class="attribute">x</span>: <span class="number">0</span>,<span class="attribute">y</span>: <span class="number">0</span>))</span><br></pre></td></tr></table></figure>
+<ol>
+<li><strong>生成图片</strong></li>
+</ol>
+<figure class="highlight haxe"><table><tr><td class="code"><pre><span class="line">let <span class="keyword">new</span><span class="type">Img</span>: UIImage = UIGraphicsGetImageFromCurrentImageContext()!</span><br></pre></td></tr></table></figure>
+<ol>
+<li><strong>关闭路径</strong></li>
+</ol>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="title">UIGraphicsEndImageContext</span><span class="params">()</span></span></span><br></pre></td></tr></table></figure>
 <a id="more"></a>
-<p><strong> 数组遍历</strong></p>
-<figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> j <span class="keyword">in</span> <span class="number">0</span>..&lt;array<span class="selector-class">.count</span> &#123;</span><br><span class="line"><span class="function"><span class="title">print</span><span class="params">(array[j])</span></span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span> value <span class="keyword">in</span> array &#123;</span><br><span class="line"><span class="function"><span class="title">print</span><span class="params">(value)</span></span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//遍历某个区间</span></span><br><span class="line"><span class="keyword">for</span> value <span class="keyword">in</span> array[<span class="number">0</span>...<span class="number">3</span>]&#123;</span><br><span class="line">value</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//遍历同时取下标</span></span><br><span class="line"><span class="keyword">for</span> (index,value) <span class="keyword">in</span> array.enumerated() &#123;</span><br><span class="line"><span class="function"><span class="title">print</span><span class="params">(index,value)</span></span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="字典"><a href="#字典" class="headerlink" title="字典"></a>字典</h4><figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line">let <span class="string">dic :</span> [<span class="string">String :</span> Any] = [<span class="string">"a"</span>:<span class="number">1</span>, <span class="string">"b"</span>:<span class="string">"2"</span>] <span class="comment">//不可变</span></span><br><span class="line">var <span class="string">dic :</span> [<span class="string">String :</span> Any] = [<span class="string">"a"</span>:<span class="number">1</span>, <span class="string">"b"</span>:<span class="string">"2"</span>] <span class="comment">//可变</span></span><br></pre></td></tr></table></figure>
-<p><strong> 增</strong></p>
-<figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line">dic[<span class="string">"c"</span>] = <span class="number">2</span></span><br><span class="line"><span class="comment">//或则</span></span><br><span class="line">dic.updateValue(<span class="number">2</span>,<span class="string">forKey:</span><span class="string">"c"</span>)</span><br><span class="line"><span class="comment">//以上两种如原字典中已存此key,则修改value ,否则新增该键值对</span></span><br></pre></td></tr></table></figure>
-<p><strong> 删</strong></p>
-<figure class="highlight flix"><table><tr><td class="code"><pre><span class="line">dic.removeValue(forKey:<span class="string">"a"</span>)</span><br><span class="line"><span class="comment">//通过索引删除</span></span><br><span class="line"><span class="keyword">let</span> <span class="keyword">index</span> = dic.<span class="keyword">index</span>(forKey:<span class="string">"a"</span>)</span><br><span class="line">dic.remove(at:<span class="keyword">index</span>)</span><br></pre></td></tr></table></figure>
-<p><strong> 查</strong></p>
-<figure class="highlight maxima"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="built_in">key</span>,value) <span class="keyword">in</span> dic&#123;</span><br><span class="line"><span class="built_in">print</span> (<span class="built_in">key</span>, <span class="string">":"</span>, value)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>以下为封装的方法</p>
+</blockquote>
+<figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line"><span class="comment">/// 图片圆角</span></span><br><span class="line"><span class="comment">///</span></span><br><span class="line"><span class="comment">/// - Parameter img: 传入图片</span></span><br><span class="line"><span class="comment">/// - Returns: 传出新图片</span></span><br><span class="line"><span class="keyword">static</span> func imgeRoundedCorners(<span class="string">img:</span> UIImage) -&gt; UIImage&#123;</span><br><span class="line"></span><br><span class="line">UIGraphicsBeginImageContextWithOptions(img.size, <span class="literal">false</span>, <span class="number">0.0</span>)</span><br><span class="line">let <span class="string">path:</span> UIBezierPath = UIBezierPath.init(<span class="string">ovalIn:</span> CGRect(<span class="string">x:</span> <span class="number">0</span>,<span class="string">y:</span> <span class="number">0</span>,<span class="string">width:</span> img.size.width,<span class="string">height:</span> img.size.height))</span><br><span class="line">path.addClip()</span><br><span class="line">img.draw(<span class="string">at:</span> CGPoint(<span class="string">x:</span> <span class="number">0</span>,<span class="string">y:</span> <span class="number">0</span>))</span><br><span class="line"></span><br><span class="line">let <span class="string">newImg:</span> UIImage = UIGraphicsGetImageFromCurrentImageContext()!</span><br><span class="line">UIGraphicsEndImageContext()</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> newImg</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="图片边框圆角"><a href="#图片边框圆角" class="headerlink" title="图片边框圆角"></a>图片边框圆角</h4><figure class="highlight groovy"><table><tr><td class="code"><pre><span class="line"><span class="comment">/// 带边框的图片圆角</span></span><br><span class="line"><span class="comment">///</span></span><br><span class="line"><span class="comment">/// - Parameters:</span></span><br><span class="line"><span class="comment">/// - img: 图片</span></span><br><span class="line"><span class="comment">/// - space: 边框间隔</span></span><br><span class="line"><span class="comment">/// - color: 边框颜色</span></span><br><span class="line"><span class="comment">/// - Returns: 返回生成的新图片</span></span><br><span class="line"><span class="keyword">static</span> func imgBorderRoundedCorners(<span class="string">img:</span> UIImage, <span class="string">space:</span> CGFloat, <span class="string">color:</span> UIColor) -&gt; UIImage&#123;</span><br><span class="line"></span><br><span class="line">let <span class="string">imgSize:</span> CGSize = CGSize(<span class="string">width:</span> img.size.width + <span class="number">2</span> * space, <span class="string">height:</span> img.size.height + <span class="number">2</span> * space)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">UIGraphicsBeginImageContextWithOptions(imgSize, <span class="literal">false</span>, <span class="number">0.0</span>)</span><br><span class="line">let <span class="string">path:</span> UIBezierPath = UIBezierPath.init(<span class="string">ovalIn:</span> CGRect(<span class="string">x:</span> <span class="number">0</span>,<span class="string">y:</span> <span class="number">0</span>,<span class="string">width:</span> imgSize.width,<span class="string">height:</span> imgSize.height))</span><br><span class="line"></span><br><span class="line">color.set()</span><br><span class="line">path.fill()</span><br><span class="line"></span><br><span class="line">let <span class="string">path1:</span> UIBezierPath = UIBezierPath.init(<span class="string">ovalIn:</span> CGRect(<span class="string">x:</span> space, <span class="string">y:</span> space, <span class="string">width:</span> img.size.width, <span class="string">height:</span> img.size.height))</span><br><span class="line"></span><br><span class="line">path1.addClip()</span><br><span class="line">img.draw(<span class="string">at:</span> CGPoint(<span class="string">x:</span> space,<span class="string">y:</span> space))</span><br><span class="line"></span><br><span class="line">let <span class="string">newImg:</span> UIImage = UIGraphicsGetImageFromCurrentImageContext()!</span><br><span class="line">UIGraphicsEndImageContext()</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> newImg</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="屏幕截屏"><a href="#屏幕截屏" class="headerlink" title="屏幕截屏"></a>屏幕截屏</h4><figure class="highlight objectivec"><table><tr><td class="code"><pre><span class="line"><span class="comment">/// 截屏</span></span><br><span class="line"><span class="comment">///</span></span><br><span class="line"><span class="comment">/// - Parameters:</span></span><br><span class="line"><span class="comment">/// - size: 截屏的大小</span></span><br><span class="line"><span class="comment">/// - view: 在那个View上截屏</span></span><br><span class="line"><span class="comment">/// - Returns: 返回一个图片</span></span><br><span class="line"><span class="keyword">static</span> func imgScreenshots(size: <span class="built_in">CGSize</span>, <span class="keyword">in</span> view: <span class="built_in">UIView</span>) -&gt; <span class="built_in">UIImage</span> &#123;</span><br><span class="line"></span><br><span class="line"><span class="built_in">UIGraphicsBeginImageContextWithOptions</span>(size, <span class="literal">false</span>, <span class="number">0.0</span>)</span><br><span class="line"><span class="comment">// 离屏渲染</span></span><br><span class="line">view.layer.render(<span class="keyword">in</span>: <span class="built_in">UIGraphicsGetCurrentContext</span>()!)</span><br><span class="line"></span><br><span class="line">let imgNew: <span class="built_in">UIImage</span> = <span class="built_in">UIGraphicsGetImageFromCurrentImageContext</span>()!</span><br><span class="line"></span><br><span class="line"><span class="built_in">UIGraphicsEndImageContext</span>()</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> imgNew</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="保存图片的多种方式"><a href="#保存图片的多种方式" class="headerlink" title="保存图片的多种方式"></a>保存图片的多种方式</h4><h5 id="1-UIImageWriteToSavedPhotosAlbum函数"><a href="#1-UIImageWriteToSavedPhotosAlbum函数" class="headerlink" title="1. UIImageWriteToSavedPhotosAlbum函数"></a>1. UIImageWriteToSavedPhotosAlbum函数</h5><figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="comment">//保存到相册的图片对象</span></span><br><span class="line"><span class="comment">//保存完成功后回调的目标对象</span></span><br><span class="line"><span class="comment">//保存完成后回调的方法</span></span><br><span class="line"><span class="comment">//保存完成后，会回调方法的contextinfo中</span></span><br><span class="line"><span class="type">UIImageWriteToSavedPhotosAlbum</span>(imgNew, <span class="keyword">self</span>, #selector(imgSaveDidFinish(img:error:)), <span class="literal">nil</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">//保存成功后回调方法</span></span><br><span class="line"><span class="meta">@objc</span> <span class="function"><span class="keyword">func</span> <span class="title">imgSaveDidFinish</span><span class="params">(img: UIImage, error: NSError)</span></span> &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="2-使用Photos框架下的PHPPhotoLibrary类来实现保存"><a href="#2-使用Photos框架下的PHPPhotoLibrary类来实现保存" class="headerlink" title="2. 使用Photos框架下的PHPPhotoLibrary类来实现保存"></a>2. 使用Photos框架下的PHPPhotoLibrary类来实现保存</h5><figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> Photos <span class="comment">//导入模块</span></span><br><span class="line"></span><br><span class="line"><span class="type">PHPhotoLibrary</span>.shared().performChanges(&#123;</span><br><span class="line"><span class="comment">//写入相册</span></span><br><span class="line"><span class="type">PHAssetChangeRequest</span>.creationRequestForAsset(from: imgNew)</span><br><span class="line">&#125;) &#123; (success, error) <span class="keyword">in</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">"成功： <span class="subst">\(success)</span> 错误：<span class="subst">\(String(describing: error)</span>)"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -451,8 +470,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/04/26/Swift-二-字符串/" rel="next" title="Swift <二> 字符串">
-                <i class="fa fa-chevron-left"></i> Swift <二> 字符串
+              <a href="/2018/04/26/UIBezierPath/" rel="next" title="UIBezierPath">
+                <i class="fa fa-chevron-left"></i> UIBezierPath
               </a>
             
           </div>
@@ -461,8 +480,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/04/26/Swift-四-类型转换和空和运算符/" rel="prev" title="Swift <四> 类型转换和空和运算符">
-                Swift <四> 类型转换和空和运算符 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/04/26/Swift-一-逻辑分支和循环/" rel="prev" title="Swift <一> 逻辑分支和循环">
+                Swift <一> 逻辑分支和循环 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -646,7 +665,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#数组"><span class="nav-number">1.</span> <span class="nav-text">数组</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#字典"><span class="nav-number">1.1.</span> <span class="nav-text">字典</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#图片圆角"><span class="nav-number">1.</span> <span class="nav-text">图片圆角</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#具体方法和画图操作基本差不过，主要分为以下几个步骤"><span class="nav-number">1.0.1.</span> <span class="nav-text">具体方法和画图操作基本差不过，主要分为以下几个步骤</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#图片边框圆角"><span class="nav-number">1.1.</span> <span class="nav-text">图片边框圆角</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#屏幕截屏"><span class="nav-number">1.2.</span> <span class="nav-text">屏幕截屏</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#保存图片的多种方式"><span class="nav-number">1.3.</span> <span class="nav-text">保存图片的多种方式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-UIImageWriteToSavedPhotosAlbum函数"><span class="nav-number">1.3.1.</span> <span class="nav-text">1. UIImageWriteToSavedPhotosAlbum函数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-使用Photos框架下的PHPPhotoLibrary类来实现保存"><span class="nav-number">1.3.2.</span> <span class="nav-text">2. 使用Photos框架下的PHPPhotoLibrary类来实现保存</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>

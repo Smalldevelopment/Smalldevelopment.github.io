@@ -1379,6 +1379,206 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/26/截屏、圆角、保存相册/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="一个被怼的小开发">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/img/PNG.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="一个被怼的小开发">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/04/26/截屏、圆角、保存相册/" itemprop="url">截屏、圆角、保存相册</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-26T16:33:50+08:00">
+                2018-04-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Swift/" itemprop="url" rel="index">
+                    <span itemprop="name">Swift</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  482
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="图片圆角"><a href="#图片圆角" class="headerlink" title="图片圆角"></a>图片圆角</h3><h5 id="具体方法和画图操作基本差不过，主要分为以下几个步骤"><a href="#具体方法和画图操作基本差不过，主要分为以下几个步骤" class="headerlink" title="具体方法和画图操作基本差不过，主要分为以下几个步骤"></a>具体方法和画图操作基本差不过，主要分为以下几个步骤</h5><ol>
+<li><strong>开启图片下上文</strong></li>
+</ol>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="title">UIGraphicsBeginImageContextWithOptions</span><span class="params">(img.size, false, <span class="number">0.0</span>)</span></span></span><br></pre></td></tr></table></figure>
+<ol>
+<li><strong>描述路径</strong></li>
+</ol>
+<figure class="highlight arduino"><table><tr><td class="code"><pre><span class="line">let path: UIBezierPath = UIBezierPath.init(ovalIn: CGRect(x: <span class="number">0</span>,y: <span class="number">0</span>,<span class="built_in">width</span>: img.<span class="built_in">size</span>.<span class="built_in">width</span>,<span class="built_in">height</span>: img.<span class="built_in">size</span>.<span class="built_in">height</span>))</span><br></pre></td></tr></table></figure>
+<ol>
+<li><strong>开始剪切</strong></li>
+</ol>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">path</span><span class="selector-class">.addClip</span>()</span><br></pre></td></tr></table></figure>
+<ol>
+<li><strong>开始绘制</strong></li>
+</ol>
+<figure class="highlight less"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">img</span><span class="selector-class">.draw</span>(<span class="attribute">at</span>: CGPoint(<span class="attribute">x</span>: <span class="number">0</span>,<span class="attribute">y</span>: <span class="number">0</span>))</span><br></pre></td></tr></table></figure>
+<ol>
+<li><strong>生成图片</strong></li>
+</ol>
+<figure class="highlight haxe"><table><tr><td class="code"><pre><span class="line">let <span class="keyword">new</span><span class="type">Img</span>: UIImage = UIGraphicsGetImageFromCurrentImageContext()!</span><br></pre></td></tr></table></figure>
+<ol>
+<li><strong>关闭路径</strong></li>
+</ol>
+<figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="title">UIGraphicsEndImageContext</span><span class="params">()</span></span></span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/04/26/截屏、圆角、保存相册/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/26/UIBezierPath/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1909,187 +2109,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/02/07/组件化开发准备-一/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="一个被怼的小开发">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/img/PNG.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="一个被怼的小开发">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/02/07/组件化开发准备-一/" itemprop="url">组件化开发准备 一</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-07T14:47:36+08:00">
-                2018-02-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/iOS/" itemprop="url" rel="index">
-                    <span itemprop="name">iOS</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  571
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  2
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="如何将自己的项目发布到Cocoapods上"><a href="#如何将自己的项目发布到Cocoapods上" class="headerlink" title="如何将自己的项目发布到Cocoapods上"></a>如何将自己的项目发布到Cocoapods上</h2><p>具体分为以下四个步骤</p>
-<p><strong>1.</strong> 创建 <code>.podspec</code> 文件</p>
-<p><strong>2.</strong> 验证 <code>github</code> 仓库</p>
-<p><strong>3.</strong> 登录注册 <code>cocoapods</code></p>
-<p><strong>4.</strong> 发布到 <code>cocoapods</code><br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/02/07/组件化开发准备-一/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2144,7 +2163,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2276,7 +2295,7 @@
 </div>
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共10.0k字</span>
+  <span class="post-count">博客全站共10.5k字</span>
 </div>
         
 
